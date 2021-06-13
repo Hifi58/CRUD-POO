@@ -5,15 +5,15 @@ class ConnexionBdd{
     protected $password ="";
     protected $basename = "tuto";
     public $bddPDO;
-}
 
-public function __construct($hostname, $username, $password, $basename){
-    $this->hostname=$hostname;
-    $this->username=$username;
-    $this->password=$password;
-    $this->basename=$basename;
-    $this->bddPDO=$this->connectBase();
-}
+
+    public function __construct($hostname, $username, $password, $basename){
+        $this->hostname=$hostname;
+        $this->username=$username;
+        $this->password=$password;
+        $this->basename=$basename;
+        $this->bddPDO=$this->connectBase();
+    }
 
 protected function connectBase(){
     try{
@@ -22,7 +22,7 @@ protected function connectBase(){
         return $bdd;
     }
     catch(PDOException $e){
-        echo 'connexion failed'  $e->getMessage()
+        echo 'connexion failed'.  $e->getMessage();
     }
 }
 
@@ -50,14 +50,14 @@ public function setPassword() {
 public function setbasename() {
     $this->basename=$basename;
 }
-
+}
 
 // Passage aux function de CRUD
 
 class CrudGite extends ConnexionBdd{
     protected $tablename = "gite";
 
-    function __construct($hostname, $username, $password, $basename,$tablename) {
+    function __construct($hostname, $username, $password, $basename, $tablename) {
         parent::__construct($hostname, $username, $password, $basename);
         $this->tablename=$tablename;
     }
@@ -72,7 +72,7 @@ class CrudGite extends ConnexionBdd{
         return $rs;
     }
 
-    public function getGite(){
+    public function getGites(){
         try{
             $rs = $this->bddPDO->query("SELECT * FROM $this->tablename ORDER BY id_gite DESC");
         }

@@ -23,8 +23,9 @@ class CrudGite{
     }
 
     public function getAdresse(){
-        return $this->adresse
+        return $this->adresse;
     }
+
     public function getPrix(){
         return $this->prix;
     }
