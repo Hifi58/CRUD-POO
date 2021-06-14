@@ -1,10 +1,9 @@
 <?php
     require_once('CrudManager.php');
-    $objectmanager = new ConnexionBdd();
+    require 'Gite.php';
 
-    if(isset($_POST['submit'])){
-        $objectmanager->addGite($_POST);
-    }
+    $gite = $manager->addGite();
+    $hebergement= new CrudManager($data);
 ?>
 
 <!DOCTYPE html>
@@ -17,9 +16,9 @@
 </head>
 <body>
     <form action="CrudManager" method="POST">
-    <input type="text" name="nom" placeholder="nom"><br>
-    <input type="text" name="adresse" placeholder="adresse"><br>
-    <input type="number" min="0" set="0.01" name="prix" placeholder="prix"><br>
+    <input type="text" name="nom" value="<?php $nom->getNom() ?>" placeholder="nom"><br>
+    <input type="text" name="adresse" value="<?php $adresse->getAdresse() ?> placeholder="adresse"><br>
+    <input type="number" min="0" set="0.01" name="prix" value="<?php $prix->getPrix() ?> placeholder="prix"><br>
     <button type="submit">Valider</button>
     </form>
 </body>

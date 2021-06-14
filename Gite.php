@@ -1,5 +1,5 @@
 <?php
-class CrudGite{
+class Gite{
     private $id;
     private $nom;
     private $adresse;
